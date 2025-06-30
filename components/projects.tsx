@@ -17,22 +17,22 @@ const projects = [
     live: "#",
   },
   {
-    title: "Blockchain Wallet",
+    title: "PolybiuOS",
     description:
-      "A Web3 wallet application that allows users to manage their cryptocurrency assets, send and receive transactions, and interact with decentralized applications.",
-    image: "/placeholder.jpg",
-    technologies: ["React", "Solidity", "Web3.js", "Ethers.js"],
-    github: "#",
-    live: "#",
+      "POLYBIUOS is an advanced AI-powered code generation and analysis platform designed to enhance developer productivity through intelligent automation and powerful tools. It offers a sleek, terminal-inspired interface with a cyberpunk aesthetic.",
+    image: "/polybiuos.png",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Radix UI", "OpenAI API"],
+    github: "https://github.com/pasindupiumal03/eigencode",
+    live: "https://polybiuos.io/",
   },
   {
-    title: "Task Management App",
+    title: "Fraktom",
     description:
-      "A collaborative task management application with real-time updates, user roles, and project tracking capabilities.",
-    image: "/placeholder.jpg",
-    technologies: ["React", "Firebase", "Tailwind CSS", "Redux"],
-    github: "#",
-    live: "#",
+      "A modern, educational trading simulation platform inspired by pump.fun. Fraktom lets users practice trading without risking real money, climb leaderboards, and learn trading concepts interactively.",
+    image: "/fraktom.png",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui"],
+    github: "https://github.com/pasindupiumal03/fraktom",
+    live: "https://www.fraktom.com/",
   },
   {
     title: "Portfolio Website",
@@ -40,7 +40,7 @@ const projects = [
       "A modern portfolio website with interactive animations and responsive design, showcasing projects and skills.",
     image: "/placeholder.jpg",
     technologies: ["Next.js", "Framer Motion", "Tailwind CSS", "Three.js"],
-    github: "#",
+    github: "https://github.com/pasindupiumal03/pasindu_weerakoon",
     live: "#",
   },
 ]
@@ -108,6 +108,8 @@ export default function Projects() {
                 <div className="flex gap-4">
                   <a
                     href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`flex items-center gap-2 transition-colors ${
                       isDark ? "text-gray-400 hover:text-blue-500" : "text-gray-600 hover:text-blue-500"
                     }`}
@@ -117,6 +119,8 @@ export default function Projects() {
                   </a>
                   <a
                     href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`flex items-center gap-2 transition-colors ${
                       isDark ? "text-gray-400 hover:text-blue-500" : "text-gray-600 hover:text-blue-500"
                     }`}

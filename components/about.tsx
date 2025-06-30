@@ -62,12 +62,16 @@ export default function About() {
             <div className="flex space-x-4 mb-8">
               <a
                 href="https://github.com/pasindupiumal03"
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`${isDark ? "text-gray-400" : "text-gray-500"} hover:text-blue-500 transition-colors`}
               >
                 <FaGithub size={24} />
               </a>
               <a
                 href="https://www.linkedin.com/in/pasindu-piumalxyz/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`${isDark ? "text-gray-400" : "text-gray-500"} hover:text-blue-500 transition-colors`}
               >
                 <FaLinkedin size={24} />
@@ -77,6 +81,7 @@ export default function About() {
 
             <a
               href="/resume.pdf"
+              download
               className="px-6 py-3 bg-blue-500 text-white rounded-full font-medium hover:bg-blue-600 transition-colors inline-block"
             >
               Download Resume

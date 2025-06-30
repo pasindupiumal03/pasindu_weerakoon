@@ -57,6 +57,8 @@ export default function Hero() {
             <div className="flex justify-center md:justify-start space-x-4 mb-8">
               <a
                 href="https://www.linkedin.com/in/pasindu-piumalxyz/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
                   isDark
                     ? "bg-gray-800 text-gray-400 hover:text-white hover:bg-blue-500"
@@ -67,6 +69,8 @@ export default function Hero() {
               </a>
               <a
                 href="https://github.com/pasindupiumal03"
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
                   isDark
                     ? "bg-gray-800 text-gray-400 hover:text-white hover:bg-blue-500"
@@ -76,7 +80,9 @@ export default function Hero() {
                 <FaGithub size={20} />
               </a>
               <a
-                href="#"
+                href="https://www.facebook.com/pasindu.piumal.3511/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
                   isDark
                     ? "bg-gray-800 text-gray-400 hover:text-white hover:bg-blue-500"
@@ -86,7 +92,9 @@ export default function Hero() {
                 <FaFacebook size={20} />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/mr.pasiya_03/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
                   isDark
                     ? "bg-gray-800 text-gray-400 hover:text-white hover:bg-blue-500"
@@ -100,6 +108,7 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
               <a
                 href="/resume.pdf"
+                download
                 className="px-8 py-3 bg-blue-500 text-white rounded-full font-medium hover:bg-blue-600 transition-colors uppercase"
               >
                 Download CV

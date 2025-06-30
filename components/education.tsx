@@ -6,22 +6,22 @@ import { useTheme } from "@/context/theme-context"
 
 const educationData = [
   {
-    degree: "BSc in software engineering",
-    institution: "University of Technology",
-    duration: "2020 - Present",
+    degree: "BSc (Hons) in Software Engineering",
+    institution: "University of Westminster",
+    duration: "2024 - Present",
     description: "Specializing in Software Engineering with focus on web development and blockchain technology.",
   },
   {
-    degree: "software engineering Diploma",
-    institution: "Tech Institute",
-    duration: "2018 - 2020",
-    description: "Studied fundamentals of programming, data structures, and algorithms.",
+    degree: "Foundation Programme",
+    institution: "Informatics Institute of Technology",
+    duration: "2023 - 2024",
+    description: "Completed comprehensive courses on HTML, CSS, JavaScript, and responsive design.",
   },
   {
-    degree: "Web Development Certification",
-    institution: "Online Learning Platform",
-    duration: "2017 - 2018",
-    description: "Completed comprehensive courses on HTML, CSS, JavaScript, and responsive design.",
+    degree: "High School Diploma",
+    institution: "Pinnawala Central College",
+    duration: "2013 - 2022",
+    description: "Studied Mathematics and Computer Science.",
   },
 ]
 

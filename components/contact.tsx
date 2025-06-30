@@ -2,10 +2,11 @@
 
 import type React from "react"
 
-import { useRef, useState } from "react"
+import { useRef, useState, useEffect } from "react"
 import { motion, useInView } from "framer-motion"
-import { FaMapMarkerAlt, FaEnvelope, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa"
+import { FaMapMarkerAlt, FaEnvelope, FaGithub, FaLinkedin, FaTwitter, FaCheck, FaExclamationTriangle, FaWhatsapp } from "react-icons/fa"
 import ParticlesBackground from "./particles-background"
+import emailjs from '@emailjs/browser'
 
 export default function Contact() {
   const ref = useRef(null)
@@ -17,23 +18,60 @@ export default function Contact() {
     subject: "",
     message: "",
   })
+  const [isLoading, setIsLoading] = useState(false)
+  const [isSuccess, setIsSuccess] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    // Initialize EmailJS with your public key
+    emailjs.init("cDJ4Ml3-SWF9rEwDC") // You'll need to replace this with your actual EmailJS public key
+  }, [])
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Form submitted:", formData)
-    // Here you would typically send the form data to your backend
-    alert("Thank you for your message! I'll get back to you soon.")
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    })
+    setIsLoading(true)
+    setError(null)
+
+    try {
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        to_name: 'Pasindu',
+        subject: formData.subject || 'Message from Portfolio Contact Form',
+        message: formData.message,
+      }
+
+      // Replace these with your actual EmailJS service ID and template ID
+      await emailjs.send(
+        'service_cgqhqp5',
+        'template_18z6lic',
+        templateParams,
+        'cDJ4Ml3-SWF9rEwDC'
+      )
+
+      setIsSuccess(true)
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      })
+      
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setIsSuccess(false)
+      }, 5000)
+    } catch (err) {
+      console.error('Failed to send email:', err)
+      setError('Failed to send message. Please try again later.')
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -76,7 +114,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold mb-1">Location</h4>
-                  <p className="text-gray-400">Your City, Country</p>
+                  <p className="text-gray-400">Kegalle, Sri Lanka</p>
                 </div>
               </div>
 
@@ -96,21 +134,27 @@ export default function Contact() {
               <div className="flex space-x-4">
                 <a
                   href="https://github.com/pasindupiumal03"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-blue-500 hover:text-white transition-colors"
                 >
                   <FaGithub size={20} />
                 </a>
                 <a
                   href="https://www.linkedin.com/in/pasindu-piumalxyz/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-blue-500 hover:text-white transition-colors"
                 >
                   <FaLinkedin size={20} />
                 </a>
                 <a
-                  href="#"
+                  href="https://wa.me/+94753505079"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-blue-500 hover:text-white transition-colors"
                 >
-                  <FaTwitter size={20} />
+                  <FaWhatsapp size={20} />
                 </a>
               </div>
             </div>
@@ -185,10 +229,37 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="px-8 py-4 bg-blue-500 text-white rounded-full font-medium hover:bg-blue-600 transition-colors"
+                disabled={isLoading}
+                className={`w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-3 px-6 rounded-lg transition-colors ${
+                  isLoading ? 'opacity-70 cursor-not-allowed' : ''
+                }`}
               >
-                Send Message
+                {isLoading ? (
+                  <div className="flex items-center justify-center">
+                    <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Sending...
+                  </div>
+                ) : (
+                  'Send Message'
+                )}
               </button>
+
+              {isSuccess && (
+                <div className="mt-4 p-3 bg-green-100 text-green-700 rounded-lg flex items-center gap-2">
+                  <FaCheck className="text-green-600" />
+                  Message sent successfully! I'll get back to you soon.
+                </div>
+              )}
+
+              {error && (
+                <div className="mt-4 p-3 bg-red-100 text-red-700 rounded-lg flex items-center gap-2">
+                  <FaExclamationTriangle className="text-red-600" />
+                  {error}
+                </div>
+              )}
             </form>
           </motion.div>
         </div>
