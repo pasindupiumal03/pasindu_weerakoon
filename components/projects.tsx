@@ -8,13 +8,13 @@ import { useTheme } from "@/context/theme-context"
 
 const projects = [
   {
-    title: "E-Commerce Platform",
+    title: "Luneshark",
     description:
-      "A full-stack e-commerce platform built with Next.js, Node.js, and MongoDB. Features include user authentication, product catalog, cart functionality, and payment integration.",
-    image: "/placeholder.jpg",
-    technologies: ["Next.js", "Node.js", "MongoDB", "Stripe"],
-    github: "#",
-    live: "#",
+      "A modern AI-powered Web3 platform built with Next.js featuring intelligent chat assistant, Solana wallet integration, cryptocurrency tools, and exclusive features for $LUNESHARK token holders. Includes AI image generation, portfolio tracking, and secure client-side wallet operations.",
+    image: "/luneshark.png",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Solana", "Web3"],
+    github: "https://github.com/pasindupiumal03/luneshark",
+    live: "https://www.luneshark.com/",
   },
   {
     title: "PolybiuOS",
@@ -35,13 +35,13 @@ const projects = [
     live: "https://www.fraktom.com/",
   },
   {
-    title: "Portfolio Website",
+    title: "BONK Terminal",
     description:
-      "A modern portfolio website with interactive animations and responsive design, showcasing projects and skills.",
-    image: "/placeholder.jpg",
-    technologies: ["Next.js", "Framer Motion", "Tailwind CSS", "Three.js"],
-    github: "https://github.com/pasindupiumal03/pasindu_weerakoon",
-    live: "#",
+      "A full-stack Solana token exploration platform with terminal-style interface for live trading data, candlestick charts, and AI-powered price predictions. Features real-time token information, market analytics, and seamless clipboard integration using BLYV and Solana Tracker APIs.",
+    image: "/bonk-terminal.png",
+    technologies: ["React.js", "Node.js", "Tailwind CSS", "Solana", "Express"],
+    github: "https://github.com/pasindupiumal03/BONK-Terminal",
+    live: "https://bonk-terminal.vercel.app/",
   },
 ]
 

@@ -42,7 +42,6 @@ export default function Hero() {
                 "Full Stack Developer",
                 "Web Developer",
                 "Blockchain Developer",
-                "Smart Contract Engineer",
                 "UI/UX Designer",
               ]}
               staticClassName={isDark ? "text-white" : "text-gray-900"}
