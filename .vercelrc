@@ -1,0 +1,15 @@
+# Vercel Project Configuration
+# This file helps Vercel understand your project structure
+
+# Framework Detection
+FRAMEWORK=nextjs
+
+# Build Settings
+BUILD_COMMAND=pnpm build
+INSTALL_COMMAND=pnpm install
+
+# Node.js Version
+NODE_VERSION=18
+
+# Environment
+NODE_ENV=production

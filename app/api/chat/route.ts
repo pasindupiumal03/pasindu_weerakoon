@@ -29,7 +29,23 @@ Contact: pasindupiumal0123@gmail.com
 
 export async function POST(request: Request) {
   try {
+    // Check if OpenAI API key is available
+    if (!process.env.OPENAI_API_KEY) {
+      return NextResponse.json(
+        { error: "OpenAI API key not configured" }, 
+        { status: 500 }
+      )
+    }
+
     const { messages } = await request.json()
+
+    // Validate input
+    if (!messages || !Array.isArray(messages)) {
+      return NextResponse.json(
+        { error: "Invalid messages format" }, 
+        { status: 400 }
+      )
+    }
 
     // Create a system message with information about Pasindu
     const systemMessage = {
