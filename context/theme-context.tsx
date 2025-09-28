@@ -13,7 +13,7 @@ interface ThemeContextProps {
 const ThemeContext = createContext<ThemeContextProps | undefined>(undefined)
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("dark")
+  const [theme, setTheme] = useState<Theme>("light")
   const [mounted, setMounted] = useState(false)
 
   const toggleTheme = () => {
@@ -37,7 +37,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   // Prevent hydration mismatch by not rendering theme-dependent content until mounted
   if (!mounted) {
     return (
-      <div suppressHydrationWarning className="dark">
+      <div suppressHydrationWarning className="light">
         <div className="loading-skeleton">
           {children}
         </div>
@@ -51,12 +51,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 export function useTheme() {
   const context = useContext(ThemeContext)
   if (context === undefined) {
-    // Return default values instead of throwing error during SSR/initial render
-    return {
-      theme: "dark" as Theme,
-      toggleTheme: () => {},
-      isDark: true
-    }
+    throw new Error("useTheme must be used within a ThemeProvider")
   }
   return context
 }
