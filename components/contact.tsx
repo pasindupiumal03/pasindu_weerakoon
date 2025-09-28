@@ -149,7 +149,7 @@ export default function Contact() {
                   <FaLinkedin size={20} />
                 </a>
                 <a
-                  href="https://wa.me/+94753505079"
+                  href="https://wa.me/+94717123826"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-blue-500 hover:text-white transition-colors"

@@ -2,17 +2,15 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { useTheme } from "@/context/theme-context"
 
 export default function LoadingScreen() {
   const [isLoading, setIsLoading] = useState(true)
-  const { isDark } = useTheme()
 
   useEffect(() => {
-    // Simulate loading time
+    // Reduced loading time for better UX
     const timer = setTimeout(() => {
       setIsLoading(false)
-    }, 2000)
+    }, 800)
 
     return () => clearTimeout(timer)
   }, [])
@@ -24,7 +22,7 @@ export default function LoadingScreen() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className={`fixed inset-0 z-50 flex flex-col items-center justify-center ${isDark ? "bg-black" : "bg-white"}`}
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black dark:bg-black"
         >
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
@@ -32,9 +30,9 @@ export default function LoadingScreen() {
             transition={{ duration: 0.5 }}
             className="text-4xl font-bold mb-8"
           >
-            <span className={isDark ? "text-white" : "text-gray-900"}>Welcome to </span>
+            <span className="text-white">Welcome to </span>
             <span className="text-blue-500">Pasindu</span>
-            <span className={isDark ? "text-white" : "text-gray-900"}>.</span>
+            <span className="text-white">.</span>
           </motion.div>
           <div className="flex space-x-3">
             <motion.div

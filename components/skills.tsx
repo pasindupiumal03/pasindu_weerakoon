@@ -22,13 +22,13 @@ import { useTheme } from "@/context/theme-context"
 import ScrollAnimation from "./scroll-animation"
 
 const skills = [
-  { name: "React", icon: SiReact, color: "text-cyan-400", percentage: 85 },
-  { name: "Node.js", icon: SiNodedotjs, color: "text-green-500", percentage: 75 },
+  { name: "React", icon: SiReact, color: "text-cyan-400", percentage: 90 },
+  { name: "Node.js", icon: SiNodedotjs, color: "text-green-500", percentage: 85 },
   { name: "JavaScript", icon: SiJavascript, color: "text-yellow-400", percentage: 90 },
   { name: "HTML5", icon: SiHtml5, color: "text-orange-500", percentage: 95 },
   { name: "CSS3", icon: SiCss3, color: "text-blue-400", percentage: 90 },
-  { name: "Tailwind", icon: SiTailwindcss, color: "text-cyan-400", percentage: 80 },
-  { name: "MongoDB", icon: SiMongodb, color: "text-green-500", percentage: 70 },
+  { name: "Tailwind", icon: SiTailwindcss, color: "text-cyan-400", percentage: 85 },
+  { name: "MongoDB", icon: SiMongodb, color: "text-green-500", percentage: 80 },
   { name: "Solidity", icon: SiSolidity, color: "text-gray-400", percentage: 60 },
   { name: "Express", icon: SiExpress, color: "text-gray-300", percentage: 75 },
   { name: "Next.js", icon: SiNextdotjs, color: "text-white", percentage: 80 },
