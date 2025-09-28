@@ -32,7 +32,7 @@ export default function About() {
               <div className="relative overflow-hidden rounded-xl border-4 border-blue-500/30 shadow-lg shadow-blue-500/20">
                 <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-transparent"></div>
                 <Image
-                  src="/pasindu.png"
+                  src="/pasindu(2).jpg"
                   alt="About"
                   width={500}
                   height={600}
@@ -80,7 +80,7 @@ export default function About() {
             </div>
 
             <a
-              href="/resume.pdf"
+              href="/Pasindu-Weerakoon.pdf"
               download
               className="px-6 py-3 bg-blue-500 text-white rounded-full font-medium hover:bg-blue-600 transition-colors inline-block"
             >

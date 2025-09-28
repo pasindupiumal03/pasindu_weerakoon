@@ -107,7 +107,7 @@ export default function Hero() {
 
             <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
               <a
-                href="/resume.pdf"
+                href="/Pasindu-Weerakoon.pdf"
                 download
                 className="px-8 py-3 bg-blue-500 text-white rounded-full font-medium hover:bg-blue-600 transition-colors uppercase"
               >

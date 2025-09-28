@@ -20,10 +20,31 @@ export default function ParticlesBackground({
 }: ParticlesBackgroundProps) {
   const particlesRef = useRef<HTMLDivElement>(null)
   const [loaded, setLoaded] = useState(false)
+  const [shouldRender, setShouldRender] = useState(false)
   const pathname = usePathname()
 
+  // Check if screen is large enough for particles
   useEffect(() => {
-    // Load particles.js script dynamically
+    const checkScreenSize = () => {
+      setShouldRender(window.innerWidth >= 768 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+    }
+    
+    checkScreenSize()
+    window.addEventListener('resize', checkScreenSize)
+    
+    return () => window.removeEventListener('resize', checkScreenSize)
+  }, [])
+
+  useEffect(() => {
+    if (!shouldRender) return
+
+    // Load particles.js script dynamically only if needed
+    const existingScript = document.querySelector('script[src*="particles.min.js"]')
+    if (existingScript) {
+      setLoaded(true)
+      return
+    }
+
     const script = document.createElement("script")
     script.src = "https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"
     script.async = true
@@ -33,20 +54,22 @@ export default function ParticlesBackground({
     document.body.appendChild(script)
 
     return () => {
-      document.body.removeChild(script)
+      if (document.body.contains(script)) {
+        document.body.removeChild(script)
+      }
     }
-  }, [])
+  }, [shouldRender])
 
   useEffect(() => {
-    if (loaded && particlesRef.current && window.particlesJS) {
+    if (loaded && shouldRender && particlesRef.current && window.particlesJS) {
       // Configure particles
       window.particlesJS(id, {
         particles: {
           number: {
-            value: 140, // Increased from 120
+            value: window.innerWidth > 1200 ? 50 : 30, // Adaptive particle count
             density: {
               enable: true,
-              value_area: 800,
+              value_area: window.innerWidth > 1200 ? 1000 : 1500,
             },
           },
           color: {
@@ -88,16 +111,14 @@ export default function ParticlesBackground({
           },
           move: {
             enable: true,
-            speed: 2.5, // Adjusted speed
+            speed: 1.5, // Reduced speed for better performance
             direction: "none",
-            random: true, // Changed to true for more natural movement
+            random: false, // Disabled for better performance
             straight: false,
             out_mode: "out",
             bounce: false,
             attract: {
-              enable: true, // Enabled attraction
-              rotateX: 600,
-              rotateY: 1200,
+              enable: false, // Disabled for better performance
             },
           },
         },
@@ -105,12 +126,10 @@ export default function ParticlesBackground({
           detect_on: "canvas",
           events: {
             onhover: {
-              enable: true,
-              mode: "grab", // Changed back to grab for more subtle interaction
+              enable: false, // Disabled for better performance
             },
             onclick: {
-              enable: true,
-              mode: "push",
+              enable: false, // Disabled for better performance
             },
             resize: true,
           },
@@ -154,7 +173,11 @@ export default function ParticlesBackground({
         })
       }
     }
-  }, [loaded, id, color, lineColor, particleOpacity, lineOpacity])
+  }, [loaded, shouldRender, id, color, lineColor, particleOpacity, lineOpacity])
+
+  if (!shouldRender) {
+    return null
+  }
 
   return <div id={id} ref={particlesRef} className="absolute inset-0 -z-10" />
 }

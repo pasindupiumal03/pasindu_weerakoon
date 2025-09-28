@@ -47,6 +47,11 @@ body {
   background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
   cursor: none;
   transition: background-color 0.3s ease, color 0.3s ease;
+  /* Performance optimizations */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeSpeed;
+  will-change: scroll-position;
 }
 
 @media (max-width: 768px) {
@@ -70,6 +75,39 @@ html {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   scroll-behavior: smooth;
+  /* Performance optimizations */
+  overflow-x: hidden;
+}
+
+/* Performance optimizations for all elements */
+* {
+  box-sizing: border-box;
+}
+
+/* Optimize animations and transitions */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    scroll-behavior: smooth;
+  }
+}
+
+/* GPU acceleration for smooth animations */
+.animate-pulse,
+.animate-bounce,
+.animate-spin,
+[class*="animate-"] {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000;
+  will-change: transform;
+}
+
+/* Optimize images and media */
+img,
+video {
+  height: auto;
+  max-width: 100%;
+  transform: translateZ(0);
 }
 
 /* Additional responsive styles */
