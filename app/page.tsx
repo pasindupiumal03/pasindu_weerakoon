@@ -28,10 +28,10 @@ export default function Home() {
         <Navbar />
         <Hero />
         <About />
-        <Skills />
+        <Projects />
         <Education />
         <Certifications />
-        <Projects />
+        <Skills />
         <Contact />
         <ChatWidget />
         <ScrollToTop />
