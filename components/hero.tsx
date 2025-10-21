@@ -79,7 +79,7 @@ export default function Hero() {
                 <FaGithub size={20} />
               </a>
               <a
-                href="https://www.facebook.com/pasindu.piumal.3511/"
+                href="https://www.facebook.com/share/17XE2ZBwfo/?mibextid=wwXIfr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
