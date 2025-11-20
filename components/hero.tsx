@@ -1,9 +1,9 @@
 "use client"
 
 import { useRef } from "react"
-import Image from "next/image"
 import { motion } from "framer-motion"
 import { FaLinkedin, FaGithub, FaFacebook, FaInstagram } from "react-icons/fa"
+import Spline from '@splinetool/react-spline'
 import ParticlesBackground from "./particles-background"
 import TypingEffect from "./typing-effect"
 import { useTheme } from "@/context/theme-context"
@@ -126,20 +126,13 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-12 md:mt-0 md:w-2/5 flex justify-center md:justify-center" // Changed from 1/2 to 2/5 and justify-end to justify-center
+            className="mt-12 md:mt-0 md:w-2/5 flex justify-center md:justify-center"
           >
-            <div className="relative w-64 h-64 md:w-80 md:h-80">
-              {" "}
-              {/* Reduced size slightly */}
-              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-blue-500/30">
-                <Image
-                  src="/pasindu.png"
-                  alt="Profile"
-                  width={400}
-                  height={400}
-                  className="rounded-full object-cover"
-                />
-              </div>
+            <div className="relative w-96 h-96 md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px]">
+              <Spline
+                scene="/robot_scene.splinecode"
+                className="w-full h-full"
+              />
             </div>
           </motion.div>
         </div>
